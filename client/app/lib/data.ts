@@ -1,6 +1,7 @@
 export const clientLogo = [
   {
     title: "client1",
+<<<<<<< HEAD
     image: "/assets/img/clients/client-1.png",
   },
   {
@@ -30,12 +31,44 @@ export const clientLogo = [
   {
     title: "client8",
     image: "/assets/img/clients/client-8.png",
+=======
+    image: "/img/clients/client-1.png",
+  },
+  {
+    title: "client2",
+    image: "/img/clients/client-2.png",
+  },
+  {
+    title: "client3",
+    image: "/img/clients/client-3.png",
+  },
+  {
+    title: "client4",
+    image: "/img/clients/client-4.png",
+  },
+  {
+    title: "client5",
+    image: "/img/clients/client-5.png",
+  },
+  {
+    title: "client6",
+    image: "/img/clients/client-6.png",
+  },
+  {
+    title: "client7",
+    image: "/img/clients/client-7.png",
+  },
+  {
+    title: "client8",
+    image: "/img/clients/client-8.png",
+>>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
   },
 ];
 
 export const portfolio = [
   {
     title: "Bottle",
+<<<<<<< HEAD
     image: "/assets/img/portfolio/portfolio-1.jpg",
   },
   {
@@ -69,6 +102,41 @@ export const portfolio = [
   {
     title: "Watch",
     image: "/assets/img/portfolio/portfolio-9.jpg",
+=======
+    image: "/img/portfolio/portfolio-1.jpg",
+  },
+  {
+    title: "Sunglass",
+    image: "/img/portfolio/portfolio-2.jpg",
+  },
+  {
+    title: "Chair",
+    image: "/img/portfolio/portfolio-3.jpg",
+  },
+  {
+    title: "Glass",
+    image: "/img/portfolio/portfolio-4.jpg",
+  },
+  {
+    title: "Lamp",
+    image: "/img/portfolio/portfolio-5.jpg",
+  },
+  {
+    title: "Lens",
+    image: "/img/portfolio/portfolio-6.jpg",
+  },
+  {
+    title: "Watch",
+    image: "/img/portfolio/portfolio-7.jpg",
+  },
+  {
+    title: "Plant",
+    image: "/img/portfolio/portfolio-8.jpg",
+  },
+  {
+    title: "Coffee",
+    image: "/img/portfolio/portfolio-9.jpg",
+>>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
   },
 ];
 export const services = [
