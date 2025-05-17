@@ -23,11 +23,7 @@ export default function Home() {
                     Welcome to <span>ByteCraft</span>
                   </h2>
                   <p>
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
+                     a digital creative studio crafting bold, intuitive, and impactful digital experiences. We specialize in front-end development, UI/UX design, motion interfaces, and interactive web projects that blend technology with creativity.
                   </p>
                   <div className="text-center">
                     <a href="" className="btn-get-started">
@@ -44,13 +40,9 @@ export default function Home() {
             >
               <div className="carousel-container">
                 <div className="carousel-content animate__animated animate__fadeInUp">
-                  <h2>Lorem Ipsum Dolor</h2>
+                  <h2>UI/UX Design</h2>
                   <p>
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
+                    At ByteCraft, we believe in the power of thoughtful design and clean development. Our work ranges from responsive websites and portfolio platforms to creative tools and animations that push the boundaries of what’s possible on the web.
                   </p>
                   <div className="text-center">
                     <a href="" className="btn-get-started">
@@ -67,13 +59,10 @@ export default function Home() {
             >
               <div className="carousel-container">
                 <div className="carousel-content animate__animated animate__fadeInUp">
-                  <h2>Sequi ea ut et est quaerat</h2>
+                  <h2>Motion & Interaction Design</h2>
                   <p>
-                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
-                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
-                    dolorem mollitia ut. Similique ea voluptatem. Esse
-                    doloremque accusamus repellendus deleniti vel. Minus et
-                    tempore modi architecto.
+                  Creating dynamic, fluid experiences with animation frameworks and creative coding.
+                   Whether it’s prototyping bold new ideas or refining user journeys, we’re passionate about every pixel and line of code.
                   </p>
                   <div className="text-center">
                     <a href="" className="btn-get-started">
