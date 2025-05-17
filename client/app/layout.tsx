@@ -35,7 +35,6 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="https://unpkg.com/@icon/icofont/icofont.css"/>
         <link
-<<<<<<< HEAD
           href="/assets/vendor/boxicons/css/boxicons.min.css"
           rel="stylesheet"
         />
@@ -49,21 +48,6 @@ export default function RootLayout({
         />
         <link href="/assets/vendor/aos/aos.css" rel="stylesheet" />
         <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-=======
-          href="/vendor/boxicons/css/boxicons.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="/vendor/animate.css/animate.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="/vendor/owl.carousel/assets/owl.carousel.min.css"
-          rel="stylesheet"
-        />
-        <link href="/vendor/aos/aos.css" rel="stylesheet" />
-        <link href="/vendor/remixicon/remixicon.css" rel="stylesheet" />
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -71,7 +55,6 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-<<<<<<< HEAD
         <script src="/assets/vendor/jquery/jquery.min.js"></script>
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -81,17 +64,6 @@ export default function RootLayout({
         <script src="/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
         <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
          <script src="/assets/js/main.js"></script>
-=======
-        <script src="/vendor/jquery/jquery.min.js"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/vendor/jquery.easing/jquery.easing.min.js"></script>
-        <script src="/vendor/php-email-form/validate.js"></script>
-        <script src="/vendor/jquery-sticky/jquery.sticky.js"></script>
-        <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="/vendor/waypoints/jquery.waypoints.min.js"></script>
-        <script src="/vendor/owl.carousel/owl.carousel.min.js"></script>
-         <script src="/js/main.js"></script>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
       </body>
     </html>
   );

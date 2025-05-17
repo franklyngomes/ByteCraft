@@ -1,11 +1,7 @@
 "use client";
-<<<<<<< HEAD
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-=======
-import React from "react";
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
 
 const Footer = () => {
   return (
@@ -14,7 +10,6 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-contact">
-<<<<<<< HEAD
               <Link href="/" className="logo mr-auto">
                 <Image
                   src="/assets/img/logo-png.png"
@@ -25,10 +20,6 @@ const Footer = () => {
                 />
               </Link>
               <p className="pt-4">
-=======
-              <h3>Company</h3>
-              <p>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
                 A108 Adam Street New York, NY 535022 United States
                 <strong>Phone:</strong> +1 5589 55488 55
                 <strong>Email:</strong> info@example.com
@@ -104,15 +95,9 @@ const Footer = () => {
       <div className="container d-md-flex py-4">
         <div className="mr-md-auto text-center text-md-left">
           <div className="copyright">
-<<<<<<< HEAD
             &copy; {" "}
             <strong>
               <span>ByteCraft</span>
-=======
-            &copy; Copyright{" "}
-            <strong>
-              <span>Company</span>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
             </strong>
             . All Rights Reserved
           </div>

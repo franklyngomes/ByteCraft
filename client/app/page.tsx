@@ -15,20 +15,12 @@ export default function Home() {
           <div className="carousel-inner" role="listbox">
             <div
               className="carousel-item active"
-<<<<<<< HEAD
               style={{ backgroundImage: "url(/assets/img/slide/slide-1.jpg)" }}
-=======
-              style={{ backgroundImage: "url(/img/slide/slide-1.jpg)" }}
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
             >
               <div className="carousel-container">
                 <div className="carousel-content animate__animated animate__fadeInUp">
                   <h2>
-<<<<<<< HEAD
                     Welcome to <span>ByteCraft</span>
-=======
-                    Welcome to <span>Company</span>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
                   </h2>
                   <p>
                     Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
@@ -48,11 +40,7 @@ export default function Home() {
 
             <div
               className="carousel-item"
-<<<<<<< HEAD
               style={{ backgroundImage: "url(/assets/img/slide/slide-2.jpg)" }}
-=======
-              style={{ backgroundImage: "url(/img/slide/slide-2.jpg)" }}
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
             >
               <div className="carousel-container">
                 <div className="carousel-content animate__animated animate__fadeInUp">
@@ -75,11 +63,7 @@ export default function Home() {
 
             <div
               className="carousel-item"
-<<<<<<< HEAD
               style={{ backgroundImage: "url(/assets/img/slide/slide-3.jpg)" }}
-=======
-              style={{ backgroundImage: "url(/img/slide/slide-3.jpg)" }}
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
             >
               <div className="carousel-container">
                 <div className="carousel-content animate__animated animate__fadeInUp">
@@ -136,11 +120,7 @@ export default function Home() {
           <div className="container">
             <div className="section-title">
               <h2>
-<<<<<<< HEAD
                 About Us
-=======
-                <strong>About Us</strong>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
               </h2>
             </div>
 
@@ -188,11 +168,7 @@ export default function Home() {
           <div className="container">
             <div className="section-title">
               <h2>
-<<<<<<< HEAD
                 Services
-=======
-                <strong>Services</strong>
->>>>>>> 8198fc5ab91a8ef19e6eae609056fc78c13ed091
               </h2>
               <p>
                 Laborum repudiandae omnis voluptatum consequatur mollitia ea est
