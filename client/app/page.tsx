@@ -23,7 +23,7 @@ export default function Home() {
                     Welcome to <span>ByteCraft</span>
                   </h2>
                   <p>
-                     a digital creative studio crafting bold, intuitive, and impactful digital experiences. We specialize in front-end development, UI/UX design, motion interfaces, and interactive web projects that blend technology with creativity.
+                     We are a digital creative studio crafting bold, intuitive, and impactful digital experiences. We specialize in front-end development, UI/UX design, motion interfaces, and interactive web projects that blend technology with creativity.
                   </p>
                   <div className="text-center">
                     <a href="" className="btn-get-started">

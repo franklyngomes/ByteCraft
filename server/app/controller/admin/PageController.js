@@ -7,7 +7,7 @@ class HomeController {
       const items = await BannerModel.find({ deleted: false });
       res.render("banner/list", {
         title: "List",
-        items,
+        data: items,
       });
     } catch (error) {
       res.redirect("/banner/list", { message: error.message });
@@ -16,12 +16,23 @@ class HomeController {
   async addPage(req, res) {
     try {
       res.render("banner/add", {
-        title: "Add Item",
+        title: "Add Banner",
       });
     } catch (error) {
       res.redirect("/banner/add", {
         message: error.message,
       });
+    }
+  }
+  async editPage(req, res){
+    try {
+      res.render("banner/edit", {
+        title: "Edit Page"
+      })
+    } catch (error) {
+      res.redirect("/banner/list",{
+        message: error.message
+      })
     }
   }
 }

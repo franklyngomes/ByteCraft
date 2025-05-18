@@ -4,3 +4,4 @@ const httpCode = {
   internalServerError: 500,
   badRequest : 400
 }
+module.exports = httpCode

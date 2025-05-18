@@ -7,7 +7,7 @@ const BannerSchema = new Schema(
       type: String,
       required: true,
     },
-    subTitle: {
+    subtitle: {
       type: String,
       required: true,
     },
@@ -27,5 +27,5 @@ const BannerSchema = new Schema(
   { timestamps: true }
 );
 
-const BannerModel = mongoose.model("Banner", BannerSchema);
+const BannerModel = mongoose.model("banners", BannerSchema);
 module.exports = BannerModel;
