@@ -1,7 +1,7 @@
 const httpCode = require("../../helper/httpServerCode");
 const BannerModel = require("../../model/BannerModel");
 
-class HomeController {
+class PageController {
   async listPage(req, res) {
     try {
       const items = await BannerModel.find({ deleted: false });
@@ -26,8 +26,11 @@ class HomeController {
   }
   async editPage(req, res){
     try {
+      const banner = await BannerModel.findById(req.params.id)
+      console.log(banner)
       res.render("banner/edit", {
-        title: "Edit Page"
+        title: "Edit Page",
+        data: banner
       })
     } catch (error) {
       res.redirect("/banner/list",{
@@ -36,4 +39,4 @@ class HomeController {
     }
   }
 }
-module.exports = new HomeController()
+module.exports = new PageController()

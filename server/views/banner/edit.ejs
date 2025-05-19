@@ -63,22 +63,43 @@
               </div>
 
               <div class="card-body">
-                <form action="/banner/add" method="POST">
+                <form
+                  action="/banner/edit/<%- data._id%>"
+                  method="POST"
+                  enctype="multipart/form-data"
+                >
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
-                    <input type="text" class="form-control" name="title" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="title"
+                      value="<%=data.title%>"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Sub-Title</label>
-                    <input type="text" class="form-control" name="subTitle" />
+                    <label for="exampleInputEmail1">Subtitle</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="subtitle"
+                      value="<%=data.subtitle%>"
+                    />
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Image</label>
                     <input type="file" class="form-control" name="image" />
+                    <% if (data.image) { %>
+                    <img
+                      src="http://localhost:5000/<%= data.image %>"
+                      width="200"
+                      class="mb-3"
+                    />
+                    <% } %>
                   </div>
 
-                  <button type="submit" class="btn btn-primary">
-                    Add Banner
+                  <button type="submit" class="btn btn-success">
+                    Update Banner
                   </button>
                 </form>
               </div>

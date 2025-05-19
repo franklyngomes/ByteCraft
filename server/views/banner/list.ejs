@@ -105,21 +105,22 @@
 
                         <td>
                           <a
-                            href="/banner/<%= item._id %>/edit"
+                            href="/banner/edit/<%- item._id %>"
                             class="btn btn-warning btn-sm"
-                            >Edit</a
+                            ><i class="fas fa-pen"></i></a
                           >
 
                           <form
-                            action="/softdel/<%= item._id %>?_method=PUT"
-                            method="POST"
+                            action="/banner/delete/<%- item._id %>"
+                            method="post"
                             style="display: inline-block"
                           >
                             <button
                               class="btn btn-danger btn-sm"
                               onclick="return confirm('Are you sure?')"
+                              type="submit"
                             >
-                              Delete
+                             <i class="fas fa-trash"></i>
                             </button>
                           </form>
                         </td>
