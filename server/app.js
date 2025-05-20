@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }))
 
 // Admin Routing
 const adminRoutes = require('./app/routes/admin/adminRoutes')
-const pageRoutes = require('./app/routes/admin/pageRoutes.js')
+const bannerRoutes = require('./app/routes/admin/bannerRoute.js')
 app.use(adminRoutes)
-app.use(pageRoutes)
+app.use(bannerRoutes)
 
 // Api Routing
 const apiRoute = require('./app/routes/api/BannerRoute.js')
-app.use(apiRoute)
+app.use('/api',apiRoute)
 
 const port = 5000
 app.listen(port, () => {
