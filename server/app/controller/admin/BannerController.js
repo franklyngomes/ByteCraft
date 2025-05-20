@@ -89,12 +89,12 @@ class BannerController {
         updateData.image = newImagePath;
         await updateData.save();
       }
+      res.redirect("/banner/list")
       return res.status(httpCode.create).json(
         {
           message: "Banner updated successfully",
           data: updateData,
-        },
-        res.redirect("/banner/list")
+        }
       );
     } catch (error) {
       return res.status(httpCode.internalServerError).json({

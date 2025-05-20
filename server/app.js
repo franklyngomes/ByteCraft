@@ -18,12 +18,14 @@ app.use(express.urlencoded({ extended: true }))
 // Admin Routing
 const adminRoutes = require('./app/routes/admin/adminRoutes')
 const bannerRoutes = require('./app/routes/admin/bannerRoute.js')
+const portfolioRoutes = require('./app/routes/admin/portfolioRoutes.js')
 app.use(adminRoutes)
 app.use(bannerRoutes)
+app.use(portfolioRoutes)
 
 // Api Routing
-const apiRoute = require('./app/routes/api/BannerRoute.js')
-app.use('/api',apiRoute)
+const bannerApiRoute = require('./app/routes/api/BannerApiRoute.js')
+app.use('/api',bannerApiRoute)
 
 const port = 5000
 app.listen(port, () => {
