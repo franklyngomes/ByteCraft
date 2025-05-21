@@ -7,11 +7,11 @@ const path = require('path')
 
 database()
 const app = express()
+app.use(cors())
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 app.use(express.static(__dirname + "/public"))
 app.use('/upload', express.static(path.join(__dirname, 'upload')))
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -25,7 +25,9 @@ app.use(portfolioRoutes)
 
 // Api Routing
 const bannerApiRoute = require('./app/routes/api/BannerApiRoute.js')
+const portfolioApiRoute = require('./app/routes/api/PortfolioApiRoute.js')
 app.use('/api',bannerApiRoute)
+app.use('/api',portfolioApiRoute)
 
 const port = 5000
 app.listen(port, () => {

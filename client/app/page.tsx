@@ -1,9 +1,15 @@
+"use client";
+import React from "react";
 import { clientLogo } from "./lib/data";
 import { portfolio } from "./lib/data";
 import { services } from "./lib/data";
-import React from "react";
+import { BannerListQuery, PortfolioListQuery } from "@/api/query/query";
+import Image from "next/image";
 
 export default function Home() {
+  const { data } = BannerListQuery();
+  const {data: portfolio} = PortfolioListQuery()
+  console.log(portfolio)
   return (
     <>
       <section id="hero">
@@ -13,65 +19,41 @@ export default function Home() {
           data-ride="carousel"
         >
           <div className="carousel-inner" role="listbox">
-            <div
-              className="carousel-item active"
-              style={{ backgroundImage: "url(/assets/img/slide/slide-1.jpg)" }}
-            >
-              <div className="carousel-container">
-                <div className="carousel-content animate__animated animate__fadeInUp">
-                  <h2>
-                    Welcome to <span>ByteCraft</span>
-                  </h2>
-                  <p>
-                     We are a digital creative studio crafting bold, intuitive, and impactful digital experiences. We specialize in front-end development, UI/UX design, motion interfaces, and interactive web projects that blend technology with creativity.
-                  </p>
-                  <div className="text-center">
-                    <a href="" className="btn-get-started">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="carousel-item"
-              style={{ backgroundImage: "url(/assets/img/slide/slide-2.jpg)" }}
-            >
-              <div className="carousel-container">
-                <div className="carousel-content animate__animated animate__fadeInUp">
-                  <h2>UI/UX Design</h2>
-                  <p>
-                    At ByteCraft, we believe in the power of thoughtful design and clean development. Our work ranges from responsive websites and portfolio platforms to creative tools and animations that push the boundaries of what’s possible on the web.
-                  </p>
-                  <div className="text-center">
-                    <a href="" className="btn-get-started">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="carousel-item"
-              style={{ backgroundImage: "url(/assets/img/slide/slide-3.jpg)" }}
-            >
-              <div className="carousel-container">
-                <div className="carousel-content animate__animated animate__fadeInUp">
-                  <h2>Motion & Interaction Design</h2>
-                  <p>
-                  Creating dynamic, fluid experiences with animation frameworks and creative coding.
-                   Whether it’s prototyping bold new ideas or refining user journeys, we’re passionate about every pixel and line of code.
-                  </p>
-                  <div className="text-center">
-                    <a href="" className="btn-get-started">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {data
+              ? data.map((item: any, index: number) => {
+                  const imageUrl = `http://localhost:5000/${item.image.replaceAll(
+                    "\\",
+                    "/"
+                  )}`;
+                  return (
+                    <div
+                       className={`carousel-item ${index === 0 ? "active" : ""}`}
+                      key={item._id}
+                      style={{
+                        backgroundImage: `url("${imageUrl}")`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    >
+                      <div className="carousel-container">
+                        <div className="carousel-content animate__animated animate__fadeInUp">
+                          <h2>
+                            {item.title}
+                          </h2>
+                          <p>
+                            {item.subtitle}
+                          </p>
+                          <div className="text-center">
+                            <a href="" className="btn-get-started">
+                              Read More
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              : "No Banners Found!"}
           </div>
 
           <a
@@ -108,9 +90,7 @@ export default function Home() {
         <section id="about-us" className="about-us">
           <div className="container">
             <div className="section-title">
-              <h2>
-                About Us
-              </h2>
+              <h2>About Us</h2>
             </div>
 
             <div className="row content">
@@ -156,9 +136,7 @@ export default function Home() {
         <section id="services" className="services section-bg">
           <div className="container">
             <div className="section-title">
-              <h2>
-                Services
-              </h2>
+              <h2>Services</h2>
               <p>
                 Laborum repudiandae omnis voluptatum consequatur mollitia ea est
                 voluptas ut
@@ -168,7 +146,8 @@ export default function Home() {
             <div className="row">
               {services.map((item, index) => (
                 <div
-                  className="col-lg-4 col-md-6 d-flex align-items-stretch  my-4 mt-md-0" key={index}
+                  className="col-lg-4 col-md-6 d-flex align-items-stretch  my-4 mt-md-0"
+                  key={index}
                 >
                   <div className={`icon-box ${item.iconBox}`}>
                     <div className="icon">
@@ -181,13 +160,10 @@ export default function Home() {
                     <h4>
                       <a href="">{item.title}</a>
                     </h4>
-                    <p>
-                      {item.description}
-                    </p>
+                    <p>{item.description}</p>
                   </div>
                 </div>
               ))}
-
             </div>
           </div>
         </section>
@@ -199,13 +175,13 @@ export default function Home() {
             </div>
 
             <div className="row">
-              {portfolio?.map((item, index) => (
-                <div
-                  className="col-lg-4 col-md-6 portfolio-item"
-                  key={index}
-                >
+              {portfolio ? portfolio.map((item : any, index : number) => (
+                <div className="col-lg-4 col-md-6 portfolio-item" key={index}>
                   <img
-                    src={item.image}
+                    src={`http://localhost:5000/${item.image.replaceAll(
+                    "\\",
+                    "/"
+                  )}`}
                     className="img-fluid"
                     alt={item.title}
                   />
@@ -221,7 +197,7 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              ))}
+              )) : "No Portfolios Found!"}
             </div>
           </div>
         </section>
@@ -232,9 +208,7 @@ export default function Home() {
               <h2>Clients</h2>
             </div>
 
-            <div
-              className="row no-gutters clients-wrap clearfix"
-            >
+            <div className="row no-gutters clients-wrap clearfix">
               {clientLogo.map((item) => (
                 <div className="col-lg-3 col-md-4 col-6" key={item.title}>
                   <div className="client-logo">
