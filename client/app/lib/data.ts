@@ -32,45 +32,6 @@ export const clientLogo = [
     image: "/assets/img/clients/client-8.png",
   },
 ];
-
-export const portfolio = [
-  {
-    title: "Bottle",
-    image: "/assets/img/portfolio/portfolio-1.jpg",
-  },
-  {
-    title: "Coffee",
-    image: "/assets/img/portfolio/portfolio-2.jpg",
-  },
-  {
-    title: "Plant",
-    image: "/assets/img/portfolio/portfolio-3.jpg",
-  },
-  {
-    title: "Sunglass",
-    image: "/assets/img/portfolio/portfolio-4.jpg",
-  },
-  {
-    title: "Lamp",
-    image: "/assets/img/portfolio/portfolio-5.jpg",
-  },
-  {
-    title: "Chair",
-    image: "/assets/img/portfolio/portfolio-6.jpg",
-  },
-  {
-    title: "Lens",
-    image: "/assets/img/portfolio/portfolio-7.jpg",
-  },
-  {
-    title: "Glass",
-    image: "/assets/img/portfolio/portfolio-8.jpg",
-  },
-  {
-    title: "Watch",
-    image: "/assets/img/portfolio/portfolio-9.jpg",
-  },
-];
 export const services = [
   {
     title: "Lorem Ipsum",

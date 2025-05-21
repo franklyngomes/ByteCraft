@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { clientLogo } from "./lib/data";
-import { portfolio } from "./lib/data";
 import { services } from "./lib/data";
 import { BannerListQuery, PortfolioListQuery } from "@/api/query/query";
 import Image from "next/image";
