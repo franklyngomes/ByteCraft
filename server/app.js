@@ -29,6 +29,10 @@ const portfolioApiRoute = require('./app/routes/api/PortfolioApiRoute.js')
 app.use('/api',bannerApiRoute)
 app.use('/api',portfolioApiRoute)
 
+//Auth Routing
+const authRouter = require('./app/routes/auth/authRoutes.js')
+app.use('/auth', authRouter)
+
 const port = 5000
 app.listen(port, () => {
   console.log("Server is running on http://localhost:5000/")
