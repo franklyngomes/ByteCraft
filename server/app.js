@@ -20,18 +20,22 @@ const adminRoutes = require('./app/routes/admin/adminRoutes')
 const bannerRoutes = require('./app/routes/admin/bannerRoute.js')
 const portfolioRoutes = require('./app/routes/admin/portfolioRoutes.js')
 const serviceRoutes = require('./app/routes/admin/serviceRoutes.js')
+const clientRoutes = require('./app/routes/admin/clientRoutes.js')
 app.use(adminRoutes)
 app.use(bannerRoutes)
 app.use(portfolioRoutes)
 app.use(serviceRoutes)
+app.use(clientRoutes)
 
 // Api Routing
 const bannerApiRoute = require('./app/routes/api/BannerApiRoute.js')
 const portfolioApiRoute = require('./app/routes/api/PortfolioApiRoute.js')
 const serviceApiRoute = require('./app/routes/api/ServiceApiRoute.js')
+const clientApiRoute = require('./app/routes/api/ClientApiRoute.js')
 app.use('/api',bannerApiRoute)
 app.use('/api',portfolioApiRoute)
 app.use('/api',serviceApiRoute)
+app.use('/api',clientApiRoute)
 
 //Auth Routing
 const authRouter = require('./app/routes/auth/authRoutes.js')

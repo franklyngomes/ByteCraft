@@ -57,12 +57,12 @@
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <br />
-                <h4>Edit Service</h4>
+                <h4>Edit Client</h4>
               </div>
 
               <div class="card-body">
                 <form
-                  action="/service/update/<%- data._id%>"
+                  action="/client/update/<%- data._id%>"
                   method="POST"
                   enctype="multipart/form-data"
                 >
@@ -73,15 +73,6 @@
                       class="form-control"
                       name="title"
                       value="<%=data.title%>"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Description</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="description"
-                      value="<%=data.description%>"
                     />
                   </div>
                   <div class="form-group">
@@ -97,7 +88,7 @@
                   </div>
 
                   <button type="submit" class="btn btn-success">
-                    Update Service
+                    Update Client
                   </button>
                 </form>
               </div>

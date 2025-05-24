@@ -53,12 +53,12 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800 font-weight-light">All Services</h1>
+            <h1 class="h3 mb-2 text-gray-800 font-weight-light">All Clients</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="/service/add" class="btn btn-success"> Add Service </a>
+                <a href="/client/add" class="btn btn-success"> Add Client </a>
               </div>
 
               <% if(!data || data.length===0){%>
@@ -78,16 +78,14 @@
                       <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Description</th>
                         <th>Image</th>
-                        <th>Actions</th>
+                        <th>Image</th>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Description</th>
                         <th>Image</th>
                         <th>Actions</th>
                       </tr>
@@ -98,20 +96,19 @@
                         <td><%= index+1 %></td>
 
                         <td><%- item.title %></td>
-                        <td><%- item.description %></td>
                         <td>
                           <img src="http://localhost:5000/<%- item.image  %>" alt="Service Icon" class="table-data-image"/>
                         </td>
 
                         <td>
                           <a
-                            href="/service/edit/<%- item._id %>"
+                            href="/client/edit/<%- item._id %>"
                             class="btn btn-warning btn-sm"
                             ><i class="fas fa-pen"></i></a
                           >
 
                           <form
-                            action="/service/delete/<%- item._id %>"
+                            action="/client/delete/<%- item._id %>"
                             method="post"
                             style="display: inline-block"
                           >
