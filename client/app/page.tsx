@@ -152,7 +152,6 @@ export default function Home() {
                     <div className="icon">
                       <div
                         className="mb-4"
-                        dangerouslySetInnerHTML={{ __html: item.iconBg }}
                       />
                       <i className={`bx ${item.iconLogo}`}></i>
                     </div>

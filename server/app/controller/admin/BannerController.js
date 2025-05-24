@@ -71,7 +71,7 @@ class BannerController {
         new: true,
       });
       if (!updateData) {
-        res.status(httpCode.badRequest).json({
+        return res.status(httpCode.badRequest).json({
           message: "Banner not found!",
         });
       }
@@ -89,13 +89,7 @@ class BannerController {
         updateData.image = newImagePath;
         await updateData.save();
       }
-      res.redirect("/banner/list")
-      return res.status(httpCode.create).json(
-        {
-          message: "Banner updated successfully",
-          data: updateData,
-        }
-      );
+      return res.redirect("/banner/list")
     } catch (error) {
       return res.status(httpCode.internalServerError).json({
         message: error.message,

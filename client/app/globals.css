@@ -666,17 +666,10 @@ section {
   margin-bottom: 0;
 }
 
-.services .icon-box:hover {
-  border-color: #fff;
-  box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
-}
+
 
 .services .iconbox-blue i {
   color: #47aeff;
-}
-
-.services .iconbox-blue:hover .icon i {
-  color: #fff;
 }
 
 .services .iconbox-blue:hover .icon path {
@@ -687,20 +680,12 @@ section {
   color: #ffa76e;
 }
 
-.services .iconbox-orange:hover .icon i {
-  color: #fff;
-}
-
 .services .iconbox-orange:hover .icon path {
   fill: #ffa76e;
 }
 
 .services .iconbox-pink i {
   color: #e80368;
-}
-
-.services .iconbox-pink:hover .icon i {
-  color: #fff;
 }
 
 .services .iconbox-pink:hover .icon path {
@@ -711,10 +696,6 @@ section {
   color: #ffbb2c;
 }
 
-.services .iconbox-yellow:hover .icon i {
-  color: #fff;
-}
-
 .services .iconbox-yellow:hover .icon path {
   fill: #ffbb2c;
 }
@@ -723,20 +704,12 @@ section {
   color: #ff5828;
 }
 
-.services .iconbox-red:hover .icon i {
-  color: #fff;
-}
-
 .services .iconbox-red:hover .icon path {
   fill: #ff5828;
 }
 
 .services .iconbox-teal i {
   color: #11dbcf;
-}
-
-.services .iconbox-teal:hover .icon i {
-  color: #fff;
 }
 
 .services .iconbox-teal:hover .icon path {
