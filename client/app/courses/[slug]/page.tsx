@@ -61,8 +61,16 @@ const Details = () => {
 
             <div className="col-lg-4">
               <div className="sidebar">
-                  <a href="" className="btn-buy">
-                    Buy Now
+                 <h5 style={{fontWeight: 300}}>This Course includes</h5>
+                 <ul className="p-3">
+                  <li><i className="icofont icofont-screen"></i>{" "}42 hours on-demand video</li>
+                  <li>3 articles</li>
+                  <li>Access on mobile and TV</li>
+                  <li>Full lifetime access</li>
+                  <li>Certificate of completion</li>
+                 </ul>  
+                  <a href="#" className="btn-buy">
+                    Apply Now
                   </a>
               </div>
             </div>

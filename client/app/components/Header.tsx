@@ -15,11 +15,13 @@ const Header = () => {
   const id = user?._id;
   const { data } = ProfileQuery(id);
   React.useEffect(() => {
-    const x_access_token = cookies.get("x-access-token");
-    const decoded = jwtDecode(x_access_token);
-    updateUser(decoded);
-    if (x_access_token && token !== x_access_token) {
-      updateToken(x_access_token);
+    if (cookies.get("x-access-token")) {
+      const x_access_token = cookies.get("x-access-token");
+      const decoded = jwtDecode(x_access_token);
+      updateUser(decoded);
+      if (x_access_token && token !== x_access_token) {
+        updateToken(x_access_token);
+      }
     }
   }, [token]);
   const logout = () => {

@@ -15,6 +15,9 @@ a:hover {
 * {
   font-weight: 300;
 }
+.blur-bg {
+  backdrop-filter: blur(10px);
+}
 .dropdown.no-arrow .dropdown-toggle::after {
   display: none;
 }
@@ -1514,6 +1517,7 @@ section {
 --------------------------------------------------------------*/
 .blog {
   padding: 40px 0 20px 0;
+  background-color: white;
 }
 
 .blog .entry {
