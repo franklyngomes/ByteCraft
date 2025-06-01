@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const Provider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient();
@@ -12,6 +13,7 @@ const Provider = ({ children }: { children: ReactNode }) => {
   const hideLayout = pathname === "/signin" || pathname === "/signup"
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster/>
       {!hideLayout && <Header/>}
       {children}
       {!hideLayout && <Footer/>}

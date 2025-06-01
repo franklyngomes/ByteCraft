@@ -41,6 +41,9 @@ class AuthController {
         password: hashed,
         phone,
       });
+      if(req.file){
+        userData.image = req.file.path
+      }
       const data = await userData.save();
       return res.status(httpCode.create).json({
         status: true,

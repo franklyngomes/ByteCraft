@@ -4,4 +4,6 @@ export const endPoints = {
   course: "/course",
   courseDetails:"/course/",
   team: "/team",
+  signup:"/auth/signup",
+  signin:"/auth/signin"
 };

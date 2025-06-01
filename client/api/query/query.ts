@@ -1,8 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { BannerApiFunc } from "../functions/BannerApiFunc";
 import { PortfolioApiFunc } from "../functions/PortfolioApiFunc";
 import CourseApiFunc from "../functions/CourseApiFunc";
 import CourseDetailsApiFunc from "../functions/CourseDetailsApiFunc";
+import SigninFunc from "../functions/SigninApiFunc";
+import SignupFunc from "../functions/SignupApiFunc";
+import { Cookies } from "react-cookie";
 
 export const BannerListQuery = () => {
   return useQuery({
@@ -22,9 +25,31 @@ export const CourseListQuery = () => {
     queryFn: CourseApiFunc,
   });
 };
-export const CourseDetailsQuery= (id:any) => {
+export const CourseDetailsQuery = (id: any) => {
   return useQuery({
     queryKey: ["CourseDetails"],
-    queryFn: () => CourseDetailsApiFunc(id)
-  })
-}
+    queryFn: () => CourseDetailsApiFunc(id),
+  });
+};
+export const SigninQuery = () => {
+  const cookie = new Cookies();
+  return useMutation({
+    mutationFn: SigninFunc,
+    onSuccess: (res) => {
+      if (res.status === true) {
+        cookie.set("x_access_token", res.token, { path: "/", secure: true });
+      }
+    },
+    onError: (err) => {
+      return err
+    }
+  });
+};
+export const SignupQuery = () => {
+  const cookie = new Cookies();
+  return useMutation({
+    mutationFn: SignupFunc,
+    onSuccess: (res) => {},
+    onError: (error: any) => {},
+  });
+};

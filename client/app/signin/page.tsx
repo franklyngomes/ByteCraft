@@ -1,6 +1,37 @@
+"use client";
+import { SigninQuery } from "@/api/query/query";
+import { useRouter } from "next/navigation";
 import React from "react";
-
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 const Signin = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitSuccessful, isSubmitting },
+  } = useForm();
+
+  const { mutateAsync } = SigninQuery();
+  const router = useRouter();
+
+  const onSubmit = async (formData: any) => {
+    const { email, password } = formData;
+    const formdata = new FormData();
+    formdata.append("email", email);
+    formdata.append("password", password);
+    await mutateAsync(formdata, {
+      onSuccess: (res) => {
+        if (res.status === true) {
+          reset();
+          toast.success(res.message);
+          router.push("/");
+        } else {
+          toast.error(res.response?.data?.message);
+        }
+      },
+    });
+  };
   return (
     <div className="bg-gradient-success">
       <div className="container">
@@ -27,21 +58,29 @@ const Signin = () => {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-400 font-weight-light mb-4">Welcome Back!</h1>
+                        <h1 className="h4 text-gray-400 font-weight-light mb-4">
+                          Welcome Back!
+                        </h1>
                       </div>
-                      <form className="user" method="post">
+                      <form className="user" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <input
+                            {...register("email", {
+                              required: "Email is required",
+                            })}
                             type="email"
                             className="form-control form-control-user"
                             id="exampleInputEmail"
                             aria-describedby="emailHelp"
-                              placeholder="Email"
+                            placeholder="Email"
                             name="email"
                           />
                         </div>
                         <div className="form-group">
                           <input
+                            {...register("password", {
+                              required: "Password is required",
+                            })}
                             type="password"
                             className="form-control form-control-user"
                             id="exampleInputPassword"
