@@ -5,5 +5,6 @@ export const endPoints = {
   courseDetails:"/course/",
   team: "/team",
   signup:"/auth/signup",
-  signin:"/auth/signin"
+  signin:"/auth/signin",
+  profile:"/auth/profile/"
 };

@@ -6,5 +6,6 @@ const multer = require('multer')
 const upload = multer()
 router.post("/signup", UserImageUpload.single("image"), AuthController.signup);
 router.post("/signin",upload.none(), AuthController.signin);
+router.get('/profile/:id', AuthController.userProfileDetails)
 
 module.exports = router;

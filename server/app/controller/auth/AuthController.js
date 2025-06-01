@@ -105,6 +105,28 @@ class AuthController {
     }
     next()
   }
+  async userProfileDetails(req, res){
+    try {
+      const id = req.params.id
+      const user  = await UserModel.findById(id);
+      if(!user){
+        return res.status(httpCode.notFound).json({
+          status: false,
+          message: "User not found"
+        })
+      }
+      return res.status(httpCode.success).json({
+        status: true,
+        message: "User details fetched successfully",
+        data: user
+      })
+    } catch (error) {
+      res.status(httpCode.internalServerError).json({
+        status: false,
+        message: error.message
+      })
+    }
+  }
   
 }
 module.exports = new AuthController();

@@ -8,8 +8,6 @@ import Image from "next/image";
 export default function Home() {
   const { data } = BannerListQuery();
   const {data: portfolio} = PortfolioListQuery()
-  console.log(data)
-  console.log(portfolio)
   return (
     <>
       <section id="hero">
