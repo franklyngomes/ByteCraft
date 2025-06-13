@@ -6,10 +6,12 @@ class PublicController{
     try {
       const banners = await BannerModel.find()
       const portfolio = await PortfolioModel.find()
+      console.log(req)
       await res.render('dashboard', {
         title: "Dashboard",
         banners: banners.length,
-        portfolio: portfolio.length
+        portfolio: portfolio.length,
+        username: req.user.name || null
       })
     } catch (error) {
       console.log(error)
