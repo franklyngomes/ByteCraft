@@ -1,7 +1,11 @@
 const httpCode = require("../../helper/httpServerCode");
-const { comparePassword, hashedPassword } = require("../../middleware/auth");
+const { comparePassword, hashedPassword, hmacProcess } = require("../../middleware/auth");
+const transport = require("../../middleware/sendMail");
 const UserModel = require("../../model/UserModel");
 const jwt = require("jsonwebtoken");
+const fs = require('fs')
+const {promisify} = require('util')
+const readFileAsync = promisify(fs.readFile);
 
 class AdminAuthController {
   async signup(req, res) {
@@ -42,11 +46,7 @@ class AdminAuthController {
         phone,
       });
       const data = await userData.save();
-      return res.status(httpCode.create).json({
-        status: true,
-        message: "User Created Successfully",
-        data: data,
-      });
+      return res.redirect("/");
     } catch (error) {
       return res.status(httpCode.internalServerError).json({
         status: false,
@@ -64,7 +64,7 @@ class AdminAuthController {
           message: "All fields are required",
         });
       }
-      const user = await UserModel.findOne({ email });
+      const user = await UserModel.findOne({ email }).select("+password");
       if (!user) {
         return res.status(httpCode.badRequest).json({
           status: false,
@@ -95,9 +95,111 @@ class AdminAuthController {
       });
       return res.redirect("/dashboard");
     } catch (error) {
-      console.log(error);
+      return res.status(httpCode.internalServerError).json({
+        status: false,
+        message: error.message,
+      });
     }
     next();
+  }
+  async signout (req, res){
+    try {
+      return res.clearCookie('token').redirect('/')
+    } catch (error) {
+      return res.status(httpCode.internalServerError).json({
+        status: false,
+        message: error.message,
+      });
+    }
+  }
+  async sendVerificationCode(req, res){
+    try {
+      const {email} = req.body
+      const existingUser = await UserModel.findOne({email})
+      if(!existingUser){
+        return res.status(httpCode.notFound).json({
+          status: false,
+          message: "User not found!"
+        })
+      }
+      if(existingUser.verified){
+        return res.status(httpCode.badRequest).json({
+          status: false,
+          message: "User is already verified!"
+        })
+      }
+      const codeValue = Math.floor(Math.random() * 1000000).toString()
+      // const htmlTemplate = await readFileAsync('D:/Typescript Projects/ByteCraft-master/server/views/verificationEmail.html', 'utf-8')
+      let info = await transport.sendMail({
+        from: process.env.NODEMAILER_EMAIL_ADDRESS,
+        to:existingUser.email,
+        subject: "Verify your email address",
+        html:'<h1>' + codeValue + '</h1>'
+      })
+      if(info.accepted[0] === existingUser.email){
+        const hashedCodeValue = hmacProcess(codeValue,process.env.NODEMAILER_VERIFICATION_SECRET)
+        existingUser.verificationCode = hashedCodeValue
+        existingUser.verificationCodeValidation = Date.now();
+        await existingUser.save()
+        return res.status(httpCode.success).json({
+          status: true,
+          message: 'Verification code sent!'
+        })
+      }
+    } catch (error) {
+      return res.status(httpCode.internalServerError).json({
+        status: false,
+        message: error.message
+      })
+    }
+  }
+  async VerifyCode(req, res){
+    try {
+      const {email, providedCode} = req.body
+      const codeValue = providedCode.toString()
+      const existingUser = await UserModel.findOne({email}).select("+verificationCode +verificationCodeValidation")
+      if(!existingUser){
+        return res.status(httpCode.notFound).json({
+          status: false,
+          message: "User not found!"
+        })
+      }
+      if(existingUser.verified){
+        return res.status(httpCode.badRequest).json({
+          status: false,
+          message: "User is already verified!"
+        })
+      }
+      if(!existingUser.verificationCode || !existingUser.verificationCodeValidation){
+        return res.status(httpCode.badRequest).json({
+          status: false,
+          message: "Something went wrong!"
+        })
+      }
+      if(Date.now() - existingUser.verificationCodeValidation > 5* 60 *1000){
+        return res.status(httpCode.badRequest).json({
+          status: false,
+          message: "Verification Code expired!"
+        })
+      }
+      const hashedCodeValue = hmacProcess(codeValue, process.env.NODEMAILER_VERIFICATION_SECRET)
+      if(hashedCodeValue === existingUser.verificationCode){
+        existingUser.verified = true;
+        existingUser.verificationCode = undefined;
+        existingUser.verificationCodeValidation = undefined;
+        await existingUser.save()
+        return res.status(httpCode.success).json({
+          status: true,
+          message: 'Email Verified!'
+        })
+      }
+
+    } catch (error) {
+       return res.status(httpCode.internalServerError).json({
+        status: false,
+        message: error.message
+      })
+    }
   }
 }
 module.exports = new AdminAuthController();

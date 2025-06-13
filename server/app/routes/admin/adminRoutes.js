@@ -13,10 +13,15 @@ const CourseImageUpload = require('../../helper/CourseImageUpload')
 const TeamController = require('../../controller/admin/TeamController')
 const TeamImageUpload = require('../../helper/TeamImageUpload')
 const router = express.Router()
+const multer = require('multer')
+const upload = multer()
 
 //Public
-router.post('/signup', AdminAuthController.signup)
-router.post('/signin', AdminAuthController.signin)
+router.post('/signup',upload.none(), AdminAuthController.signup)
+router.post('/signin',upload.none(), AdminAuthController.signin)
+router.get('/signout', AdminAuthController.signout)
+router.post('/send-verification-code',upload.none(), AdminAuthController.sendVerificationCode)
+router.post('/verify-email',upload.none(), AdminAuthController.VerifyCode)
 
 //Dashboard
 router.get('/dashboard',AuthCheck,PublicController.dashboardPage )

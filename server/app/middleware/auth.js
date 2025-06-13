@@ -1,6 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const httpCode = require("../helper/httpServerCode");
+const {createHmac} = require('crypto')
 
 
 const hashedPassword = (password) => {
@@ -36,4 +37,8 @@ const AuthCheck = (req, res, next) => {
     });
   }
 };
-module.exports = { hashedPassword, comparePassword, AuthCheck };
+const hmacProcess = (value, key) => {
+  const result = createHmac('sha256', key).update(value).digest('hex')
+  return result
+}
+module.exports = { hashedPassword, comparePassword, AuthCheck, hmacProcess };

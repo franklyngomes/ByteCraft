@@ -35,5 +35,14 @@ class PublicController{
       console.log(error)
     }
   }
+  async ForgotPasswordPage(req, res){
+    try {
+      return res.render('forgot-password', {
+        title: "Forgot Password"
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 module.exports = new PublicController()
