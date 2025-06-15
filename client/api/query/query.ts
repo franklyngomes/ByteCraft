@@ -34,13 +34,13 @@ export const CourseDetailsQuery = (id: any) => {
   });
 };
 export const SigninQuery = () => {
-  const cookie = new Cookies();
+  // const cookie = new Cookies();
   return useMutation({
     mutationFn: SigninFunc,
     onSuccess: (res) => {
-      if (res.status === true) {
-        cookie.set("x-access-token", res.token, { path: "/", secure: true });
-      }
+      // if (res.status === true) {
+      //   cookie.set("x-access-token", res.token, { path: "/", secure: true });
+      // }
     },
     onError: (err) => {
       return err;
@@ -48,7 +48,6 @@ export const SigninQuery = () => {
   });
 };
 export const SignupQuery = () => {
-  const cookie = new Cookies();
   return useMutation({
     mutationFn: SignupFunc,
     onSuccess: (res) => {},

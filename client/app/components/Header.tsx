@@ -6,6 +6,8 @@ import useStore from "@/store/store";
 import { Cookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode";
 import { ProfileQuery } from "@/api/query/query";
+import SignoutFunc from "@/api/functions/SignoutApiFunc";
+import { useRouter } from "next/navigation";
 const Header = () => {
   const cookies = new Cookies();
   const token = useStore((state: any) => state.token);
@@ -14,9 +16,10 @@ const Header = () => {
   const updateUser = useStore((state: any) => state.updateUser);
   const id = user?._id;
   const { data } = ProfileQuery(id);
+  const router = useRouter()
   React.useEffect(() => {
-    if (cookies.get("x-access-token")) {
-      const x_access_token = cookies.get("x-access-token");
+    if (cookies.get("token")) {
+      const x_access_token = cookies.get("token");
       const decoded = jwtDecode(x_access_token);
       updateUser(decoded);
       if (x_access_token && token !== x_access_token) {
@@ -25,9 +28,10 @@ const Header = () => {
     }
   }, [token]);
   const logout = () => {
-    if (cookies.get("x-access-token")) {
-      cookies.remove("x-access-token");
+    if (cookies.get("token")) {
+      SignoutFunc()
       updateToken("");
+      router.push('/signin')
     }
   };
   return (
@@ -115,8 +119,6 @@ const Header = () => {
                 <div className="dropdown-divider"></div>
                 <button
                   className="dropdown-item"
-                  data-toggle="modal"
-                  data-target="#logoutModal"
                   onClick={logout}
                 >
                   <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>

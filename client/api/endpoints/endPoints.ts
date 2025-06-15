@@ -6,5 +6,6 @@ export const endPoints = {
   team: "/team",
   signup:"/auth/signup",
   signin:"/auth/signin",
+  signout: "/auth/signout",
   profile:"/auth/profile/"
 };

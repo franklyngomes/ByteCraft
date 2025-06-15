@@ -4,22 +4,31 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Cookies } from "react-cookie";
 const Signin = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful, isSubmitting },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      signin_remember: false
+    }
+  });
 
   const { mutateAsync } = SigninQuery();
   const router = useRouter();
+  const cookies = new Cookies()
 
   const onSubmit = async (formData: any) => {
-    const { email, password } = formData;
+    const { email, password, signin_remember} = formData;
     const formdata = new FormData();
     formdata.append("email", email);
     formdata.append("password", password);
+    formdata.append("signin_remember", signin_remember)
     await mutateAsync(formdata, {
       onSuccess: (res) => {
         if (res.status === true) {
@@ -32,6 +41,19 @@ const Signin = () => {
       },
     });
   };
+  React.useEffect(() => {
+    const user_email =  cookies.get('user_email')
+    const user_password =  cookies.get('user_password')
+    if(user_email && user_password){
+      console.log(user_email)
+      console.log(user_password)
+    }
+    reset({
+      email: user_email,
+      password: user_password,
+      signin_remember: false
+    })
+  },[])
   return (
     <div className="bg-gradient-success">
       <div className="container">
@@ -71,7 +93,6 @@ const Signin = () => {
                             type="email"
                             className="form-control form-control-user"
                             id="exampleInputEmail"
-                            aria-describedby="emailHelp"
                             placeholder="Email"
                             name="email"
                           />
@@ -94,6 +115,7 @@ const Signin = () => {
                               type="checkbox"
                               className="custom-control-input"
                               id="customCheck"
+                              {...register("signin_remember")}
                             />
                             <label
                               className="custom-control-label"
