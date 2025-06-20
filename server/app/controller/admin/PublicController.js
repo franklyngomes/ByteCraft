@@ -6,12 +6,11 @@ class PublicController{
     try {
       const banners = await BannerModel.find()
       const portfolio = await PortfolioModel.find()
-      console.log(req)
-      await res.render('dashboard', {
+      return res.render('dashboard', {
         title: "Dashboard",
         banners: banners.length,
         portfolio: portfolio.length,
-        username: req.user.name || null
+        username: req.user.name
       })
     } catch (error) {
       console.log(error)
@@ -19,7 +18,7 @@ class PublicController{
   }
   async loginPage(req, res){
     try {
-      await res.render('signin', {
+      return res.render('signin', {
         title: "Sign in - ByteCraft"
       })
     } catch (error) {
@@ -28,7 +27,7 @@ class PublicController{
   }
   async SignUpPage(req, res) {
     try {
-      res.render('signup', {
+      return res.render('signup', {
         title: "Sign up - ByteCraft"
       })
     } catch (error) {

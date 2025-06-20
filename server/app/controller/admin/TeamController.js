@@ -10,6 +10,7 @@ class TeamController {
       res.render("teams/list", {
         title: "Team List",
         data: teams,
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);
@@ -19,6 +20,7 @@ class TeamController {
     try {
       res.render("teams/add", {
         title: "Add Member",
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);
@@ -59,6 +61,7 @@ class TeamController {
       res.render("teams/edit", {
         title: "Edit Member",
         data: team,
+        username: req.user.name,
       });
     } catch (error) {
       return res.redirect("teams/list");

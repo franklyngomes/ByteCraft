@@ -10,6 +10,7 @@ class CourseController {
       res.render("course/list", {
         title: "All Course",
         data: course,
+        username: req.user.name,
       });
     } catch (error) {
       res.redirect("/course/list");
@@ -19,6 +20,7 @@ class CourseController {
     try {
       res.render("course/add", {
         title: "Add Course",
+        username: req.user.name,
       });
     } catch (error) {
       res.redirect("course/list");
@@ -48,6 +50,7 @@ class CourseController {
       res.render("course/edit", {
         title: "Edit Course",
         data: course,
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);

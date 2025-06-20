@@ -10,6 +10,7 @@ class ClientController {
       res.render("clients/list", {
         title: "All Clients",
         data: clients,
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);
@@ -19,6 +20,7 @@ class ClientController {
     try {
       return res.render("clients/add", {
         title: "Add Client",
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);
@@ -49,6 +51,7 @@ class ClientController {
       res.render("clients/edit", {
         title: "Edit Client",
         data: clientData,
+        username: req.user.name,
       });
     } catch (error) {
       console.log(error);

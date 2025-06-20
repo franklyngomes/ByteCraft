@@ -7,7 +7,7 @@ const fs = require('fs')
 const {promisify} = require('util')
 const readFileAsync = promisify(fs.readFile);
 
-class AdminAuthController {
+class AdminController {
   async signup(req, res) {
     try {
       const { name, email, password, phone } = req.body;
@@ -100,7 +100,6 @@ class AdminAuthController {
         message: error.message,
       });
     }
-    next();
   }
   async signout (req, res){
     try {
@@ -202,4 +201,4 @@ class AdminAuthController {
     }
   }
 }
-module.exports = new AdminAuthController();
+module.exports = new AdminController();

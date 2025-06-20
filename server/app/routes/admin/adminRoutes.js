@@ -1,5 +1,5 @@
 const express = require('express')
-const AdminAuthController = require('../../controller/admin/AdminController')
+const AdminController = require('../../controller/admin/AdminController')
 const { AuthCheck } = require('../../middleware/auth')
 const PublicController = require('../../controller/admin/PublicController')
 const BannerController = require('../../controller/admin/BannerController')
@@ -17,11 +17,11 @@ const multer = require('multer')
 const upload = multer()
 
 //Public
-router.post('/signup',upload.none(), AdminAuthController.signup)
-router.post('/signin',upload.none(), AdminAuthController.signin)
-router.get('/signout', AdminAuthController.signout)
-router.post('/send-verification-code',upload.none(), AdminAuthController.sendVerificationCode)
-router.post('/verify-email',upload.none(), AdminAuthController.VerifyCode)
+router.post('/signup',upload.none(), AdminController.signup)
+router.post('/signin',upload.none(), AdminController.signin)
+router.get('/signout', AdminController.signout)
+router.post('/send-verification-code',upload.none(), AdminController.sendVerificationCode)
+router.post('/verify-email',upload.none(), AdminController.VerifyCode)
 
 //Dashboard
 router.get('/dashboard',AuthCheck,PublicController.dashboardPage )

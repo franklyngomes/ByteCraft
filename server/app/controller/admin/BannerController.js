@@ -12,6 +12,7 @@ class BannerController {
       res.render("banner/list", {
         title: "List",
         data: items,
+        username: req.user.name,
       });
     } catch (error) {
       res.redirect("/banner/list", { message: error.message });
@@ -23,6 +24,7 @@ class BannerController {
     try {
       res.render("banner/add", {
         title: "Add Banner",
+        username: req.user.name,
       });
     } catch (error) {
       res.redirect("/banner/add", {
@@ -57,6 +59,7 @@ class BannerController {
       res.render("banner/edit", {
         title: "Edit Page",
         data: banner,
+        username: req.user.name,
       });
     } catch (error) {
       res.redirect("/banner/list", {
@@ -89,7 +92,7 @@ class BannerController {
         updateData.image = newImagePath;
         await updateData.save();
       }
-      return res.redirect("/banner/list")
+      return res.redirect("/banner/list");
     } catch (error) {
       return res.status(httpCode.internalServerError).json({
         message: error.message,

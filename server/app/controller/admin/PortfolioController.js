@@ -10,6 +10,7 @@ class PortfolioController {
       res.render("portfolio/list", {
         title: "Portfolio",
         data: items,
+        username: req.user.name,
       });
     } catch (error) {
       res.status(httpCode.internalServerError).json({
@@ -21,6 +22,7 @@ class PortfolioController {
     try {
       res.render("portfolio/add", {
         title: "Add Portfolio",
+        username: req.user.name,
       });
     } catch (error) {
       res.status(httpCode.internalServerError).json({
@@ -51,6 +53,7 @@ class PortfolioController {
       res.render("portfolio/edit", {
         title: "Edit Portfolio",
         data: portfolio,
+        username: req.user.name,
       });
     } catch (error) {
       res.status(httpCode.badRequest).json({

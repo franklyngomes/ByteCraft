@@ -15,20 +15,16 @@ const UserSchema = new Schema(
       minLength: [5, "Email must have 5 characters!"],
       lowercase: true,
     },
-    phone: {
-      type: String,
-      required: true,
-    },
     password: {
       type: String,
       required: [true, "Password is required!"],
       trim: true,
       select: false,
     },
-    // image: {
-    //   required: true,
-    //   type: String,
-    // },
+    image: {
+      required: true,
+      type: String,
+    },
     verified: {
       type: Boolean,
       default: false,
