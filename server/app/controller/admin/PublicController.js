@@ -18,8 +18,10 @@ class PublicController{
   }
   async loginPage(req, res){
     try {
+      const message = req.flash('message')
       return res.render('signin', {
-        title: "Sign in - ByteCraft"
+        title: "Sign in - ByteCraft",
+        messages: req.flash()
       })
     } catch (error) {
       
@@ -28,7 +30,8 @@ class PublicController{
   async SignUpPage(req, res) {
     try {
       return res.render('signup', {
-        title: "Sign up - ByteCraft"
+        title: "Sign up - ByteCraft",
+        messages: req.flash()
       })
     } catch (error) {
       console.log(error)

@@ -29,9 +29,19 @@
 
   <body class="bg-gradient-success">
     <div class="container">
+      
       <!-- Outer Row -->
       <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
+          <!-- Flash -->
+          <div class="flex-row justify-content-center align-items-center m-auto w-50">
+            <% if (messages.error) { %> <% messages.error.forEach((msg) => { %>
+            <div class="alert alert-danger text-center text-bg-danger">
+              <%= msg %>
+            </div>
+            <% }) %> <% } %>
+          </div>
+          <!-- Flash End -->
           <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
@@ -89,7 +99,7 @@
                         class="btn btn-success btn-user btn-block"
                       >
                         Sign in
-                    </button>
+                      </button>
                     </form>
                     <hr />
                     <div class="text-center">

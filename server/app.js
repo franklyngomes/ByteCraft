@@ -5,9 +5,17 @@ const database = require("./app/config/dbCon");
 const ejs = require("ejs");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const flash = require("connect-flash")
+const session = require("express-session")
 
 database();
 const app = express();
+app.use(session({
+  secret: process.env.SESSION_SECRET_KEY,
+  resave: true,
+  saveUninitialized:true
+}))
+app.use(flash())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
