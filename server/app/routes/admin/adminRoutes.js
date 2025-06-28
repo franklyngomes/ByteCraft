@@ -17,7 +17,7 @@ const multer = require('multer')
 const upload = multer()
 
 //Public
-router.post('/signup',upload.none(), AdminController.signup)
+router.post('/signup',upload.single('image'), AdminController.signup)
 router.post('/signin',upload.none(), AdminController.signin)
 router.get('/signout', AdminController.signout)
 router.post('/send-verification-code',upload.none(), AdminController.sendVerificationCode)

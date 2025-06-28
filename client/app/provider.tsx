@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 const Provider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient();
   const pathname = usePathname()
-  const hideLayout = pathname === "/signin" || pathname === "/signup"
+  const hideLayout = pathname === "/signin" || pathname === "/signup" || pathname === "/verify-email"
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster/>

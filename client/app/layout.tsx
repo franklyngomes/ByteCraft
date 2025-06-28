@@ -54,6 +54,7 @@ export default function RootLayout({
         <Provider>
         {children}
         </Provider>
+         <script src="/assets/js/main.js"></script>
         <script src="/assets/vendor/jquery/jquery.min.js"></script>
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -62,7 +63,6 @@ export default function RootLayout({
         <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
         <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-         <script src="/assets/js/main.js"></script>
       </body>
     </html>
   );

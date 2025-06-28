@@ -129,6 +129,7 @@ class AdminController {
         existingUser.verificationCode = hashedCodeValue;
         existingUser.verificationCodeValidation = Date.now();
         await existingUser.save();
+        req.flash("success", "Verification code sent!");
         return res.status(httpCode.success).json({
           status: true,
           message: "Verification code sent!",
