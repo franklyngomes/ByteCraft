@@ -7,5 +7,6 @@ export const endPoints = {
   signup:"/auth/signup",
   signin:"/auth/signin",
   signout: "/auth/signout",
-  profile:"/auth/profile/"
+  profile:"/auth/profile/",
+  verify_email: "/auth/verify-email"
 };

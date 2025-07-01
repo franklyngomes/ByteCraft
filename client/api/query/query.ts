@@ -8,6 +8,8 @@ import SigninFunc from "../functions/SigninApiFunc";
 import SignupFunc from "../functions/SignupApiFunc";
 import { Cookies } from "react-cookie";
 import ProfileApiFunc from "../functions/ProfileApiFunc";
+import VerifyEmailFunc from "../functions/VerifyEmailApiFunc";
+import toast from "react-hot-toast";
 
 export const BannerListQuery = () => {
   return useQuery({
@@ -52,6 +54,12 @@ export const SignupQuery = () => {
     mutationFn: SignupFunc,
     onSuccess: (res) => {},
     onError: (error: any) => {},
+  });
+};
+export const VerifyEmailQuery = () => {
+  return useMutation({
+    mutationFn: VerifyEmailFunc,
+    onSuccess: (res) => {},
   });
 };
 export const ProfileQuery = (id: string | undefined) => {

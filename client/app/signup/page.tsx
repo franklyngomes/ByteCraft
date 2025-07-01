@@ -34,7 +34,7 @@ const Signup = () => {
           toast.success(res.message)
           reset();
           setImage(null)
-          router.push("/signin");
+          router.push("/verify-email");
         }else{
           toast.error(res.response?.data?.message)
         }
