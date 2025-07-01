@@ -4,11 +4,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
-import OtpInput from 'react-otp-input';
-import { VerifyEmailQuery } from "@/api/query/query";
+import { ForgotPasswordQuery } from "@/api/query/query";
 
 const VerifyEmail = () => {
-  const [otp, setOtp] = React.useState('');
   const {
     register,
     handleSubmit,
@@ -16,7 +14,7 @@ const VerifyEmail = () => {
     formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm({
   });
-  const { mutateAsync } = VerifyEmailQuery()
+  const {mutateAsync} = ForgotPasswordQuery()
 
   const router = useRouter();
   const cookies = new Cookies()
@@ -25,22 +23,18 @@ const VerifyEmail = () => {
     const { email} = formData;
     const formdata = new FormData();
     formdata.append("email", email);
-    formdata.append("code", otp);
     mutateAsync(formdata, {
       onSuccess: (res) => {
         if (res.status == true) {
           toast.success(res.message)
           reset();
-          router.push("/signin");
+          router.push("/reset-password");
         } else {
           toast.error(res.response?.data?.message)
         }
       },
     });
   };
-  const handleChange = (code: string) => {
-    setOtp(code)
-  }
   return (
     <div className="bg-gradient-success">
       <div className="container">
@@ -67,8 +61,8 @@ const VerifyEmail = () => {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h4>Email Verification</h4>
-                        <p>Your code was sent to you via email</p>
+                        <h4>Forgot Password</h4>
+                        <p>We got your back! Please enter an email, and we'll send an OTP</p>
                       </div>
                       <form className="user" onSubmit={handleSubmit(onSubmit)}>
                           <div className="form-group">
@@ -83,36 +77,17 @@ const VerifyEmail = () => {
                               name="email"
                             />
                           </div>
-                          <div className="form-group" style={{display: "flex", justifyContent: "center"}}>
-                            <OtpInput
-                              value={otp}
-                              onChange={handleChange}
-                              numInputs={6}
-                              renderSeparator={<span style={{ width: "8px" }}></span>}
-                              renderInput={(props) => <input {...props} style={{
-                                border: "1px solid gray",
-                                borderRadius: "8px",
-                                width: "35px",
-                                height: "35px",
-                                fontSize: "16px",
-                                color: "#000",
-                                fontWeight: "400",
-                                caretColor: "blue"
-                              }} className="text-center" />}
-                            />
-
-                          </div>
                         <button
                           type="submit"
                           className="btn btn-success btn-user btn-block"
                         >
-                          Verify
+                          Submit
                         </button>
                       </form>
                       <hr />
                       <div className="text-center">
                         <p className="small">
-                          Didn't receive code? <a href="">Request again</a>
+                          Already have an account? <a href="/signin">Signin</a>
                         </p>
                       </div>
                     </div>

@@ -1,59 +1,47 @@
 "use client";
-import { SigninQuery } from "@/api/query/query";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
-const Signin = () => {
+import OtpInput from 'react-otp-input';
+import { ResetPasswordQuery } from "@/api/query/query";
+
+const RestPassword = () => {
+  const [otp, setOtp] = React.useState('');
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-      signin_remember: false
-    }
   });
+  const { mutateAsync } = ResetPasswordQuery()
 
-  const { mutateAsync } = SigninQuery();
   const router = useRouter();
   const cookies = new Cookies()
 
   const onSubmit = async (formData: any) => {
-    const { email, password, signin_remember} = formData;
+    const { email, newPassword } = formData;
     const formdata = new FormData();
     formdata.append("email", email);
-    formdata.append("password", password);
-    formdata.append("signin_remember", signin_remember)
-    await mutateAsync(formdata, {
+    formdata.append("code", otp);
+    formdata.append("newPassword", newPassword)
+    mutateAsync(formdata, {
       onSuccess: (res) => {
-        if (res.status === true) {
+        if (res.status == true) {
+          toast.success(res.message)
           reset();
-          toast.success(res.message);
-          router.push("/");
+          router.push("/signin");
         } else {
-          toast.error(res.response?.data?.message);
+          toast.error(res.response?.data?.message)
         }
       },
     });
   };
-  React.useEffect(() => {
-    const user_email =  cookies.get('user_email')
-    const user_password =  cookies.get('user_password')
-    if(user_email && user_password){
-      console.log(user_email)
-      console.log(user_password)
-    }
-    reset({
-      email: user_email,
-      password: user_password,
-      signin_remember: false
-    })
-  },[])
+  const handleChange = (code: string) => {
+    setOtp(code)
+  }
   return (
     <div className="bg-gradient-success">
       <div className="container">
@@ -80,9 +68,8 @@ const Signin = () => {
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-400 font-weight-light mb-4">
-                          Welcome Back!
-                        </h1>
+                        <h4>Reset Password</h4>
+                        <p>Enter a new password for your account</p>
                       </div>
                       <form className="user" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
@@ -99,49 +86,49 @@ const Signin = () => {
                         </div>
                         <div className="form-group">
                           <input
-                            {...register("password", {
-                              required: "Password is required",
+                            {...register("newPassword", {
+                              required: "New Password is required",
                             })}
                             type="password"
                             className="form-control form-control-user"
                             id="exampleInputPassword"
-                            placeholder="Password"
-                            name="password"
+                            placeholder="Enter new password"
+                            name="newPassword"
                           />
                         </div>
-                        <div className="form-group">
-                          <div className="custom-control custom-checkbox small">
-                            <input
-                              type="checkbox"
-                              className="custom-control-input"
-                              id="customCheck"
-                              {...register("signin_remember")}
-                            />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="customCheck"
-                            >
-                              Remember Me
-                            </label>
-                          </div>
+                        <div className="form-group" style={{ display: "flex", justifyContent: "center" }}>
+                          <OtpInput
+                            value={otp}
+                            onChange={handleChange}
+                            numInputs={6}
+                            renderSeparator={<span style={{ width: "8px" }}></span>}
+                            renderInput={(props) => <input {...props} style={{
+                              border: "1px solid gray",
+                              borderRadius: "8px",
+                              width: "35px",
+                              height: "35px",
+                              fontSize: "16px",
+                              color: "#000",
+                              fontWeight: "400",
+                              caretColor: "blue"
+                            }} className="text-center" />}
+                          />
+
                         </div>
                         <button
                           type="submit"
                           className="btn btn-success btn-user btn-block"
                         >
-                          Sign in
+                          Submit
                         </button>
                       </form>
                       <hr />
                       <div className="text-center">
-                        <a className="small" href="/forgot-password">
-                          Forgot Password?
-                        </a>
-                      </div>
-                      <div className="text-center">
-                        <a className="small" href="/signup">
-                          Create an Account!
-                        </a>
+                        <p className="small">
+                          Already have an account?
+                          <a className="small" href="/signin">
+                            Request again</a>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -155,4 +142,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default RestPassword;

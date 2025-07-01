@@ -10,6 +10,8 @@ import { Cookies } from "react-cookie";
 import ProfileApiFunc from "../functions/ProfileApiFunc";
 import VerifyEmailFunc from "../functions/VerifyEmailApiFunc";
 import toast from "react-hot-toast";
+import ForgotPasswordFunc from "../functions/ForgotPasswordFunc";
+import ResetPasswordFunc from "../functions/ResetPasswordFunc";
 
 export const BannerListQuery = () => {
   return useQuery({
@@ -59,6 +61,18 @@ export const SignupQuery = () => {
 export const VerifyEmailQuery = () => {
   return useMutation({
     mutationFn: VerifyEmailFunc,
+    onSuccess: (res) => {},
+  });
+};
+export const ForgotPasswordQuery = () => {
+  return useMutation({
+    mutationFn: ForgotPasswordFunc,
+    onSuccess: (res) => {},
+  });
+};
+export const ResetPasswordQuery = () => {
+  return useMutation({
+    mutationFn: ResetPasswordFunc,
     onSuccess: (res) => {},
   });
 };

@@ -157,7 +157,7 @@ const Signup = () => {
                     <hr />
                   </form>
                   <div className="text-center">
-                    <a className="small" href="forgot-password.html">
+                    <a className="small" href="/forgot-password">
                       Forgot Password?
                     </a>
                   </div>
