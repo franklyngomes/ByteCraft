@@ -32,7 +32,13 @@ export default function RootLayout({
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossOrigin="anonymous"
         />
-        <link rel="stylesheet" href="https://unpkg.com/@icon/icofont/icofont.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/@icon/icofont/icofont.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-T6kBvK9X...TruncatedHash"
+          crossOrigin="anonymous"
+        />
         <link
           href="/assets/vendor/boxicons/css/boxicons.min.css"
           rel="stylesheet"
@@ -52,9 +58,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider>
-        {children}
+          {children}
         </Provider>
-         <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/main.js"></script>
         <script src="/assets/vendor/jquery/jquery.min.js"></script>
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
